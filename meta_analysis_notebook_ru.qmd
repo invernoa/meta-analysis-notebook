@@ -1337,14 +1337,14 @@ if (sum(!is.na(ma_adj$TE)) >= 10) {
 
 ### 10.1 Поддерживаемые типы данных
 
-| Тип | Описание | Обязательные столбцы |
-|-----|----------|----------------------|
-| **Binary** | Событие / нет, две группы сравнения | `events_treat`, `n_treat`, `events_ctrl`, `n_ctrl` |
-| **Continuous** | Средние ± SD, две группы сравнения | `n_treat`, `mean_treat`, `sd_treat`, `n_ctrl`, `mean_ctrl`, `sd_ctrl` |
-| **Prevalence** | Доля (без группы сравнения) | `events`, `n` |
-| **Incidence rate** | События / время (без группы сравнения) | `events`, `person_time` |
-| **Incidence rate ratio** | Две группы, время наблюдения | `events_treat`, `time_treat`, `events_ctrl`, `time_ctrl` |
-| **Pre-computed** | Посчитанный эффект + SE или 95% ДИ | `effect` + `se` ИЛИ `ci_lower` + `ci_upper` |
+| Тип | Мера эффекта | Обязательные столбцы |
+|-----|-------------|----------------------|
+| **Binary** | OR, RR, RD | `events_treat`, `n_treat`, `events_ctrl`, `n_ctrl` |
+| **Continuous** | MD, SMD | `n_treat`, `mean_treat`, `sd_treat`, `n_ctrl`, `mean_ctrl`, `sd_ctrl` |
+| **Prevalence** | Доля (%) | `events`, `n` |
+| **Incidence rate** | IR на 1000 ч.-лет | `events`, `person_time` |
+| **Incidence rate ratio** | IRR | `events_treat`, `time_treat`, `events_ctrl`, `time_ctrl` |
+| **Pre-computed** | Любая (OR, RR, HR, MD…) | `effect` + `se` ИЛИ `ci_lower` + `ci_upper` |
 
 > Имена столбцов могут быть любыми — приложение предложит сопоставить их вручную после загрузки файла.
 
@@ -1390,48 +1390,7 @@ if (sum(!is.na(ma_adj$TE)) >= 10) {
 
 ---
 
-### 10.3 Примеры тестовых файлов
-
-Скачайте готовые файлы для проверки каждого типа:
-
-```{r test-data-links, echo=FALSE}
-test_files <- data.frame(
-  "Тип" = c("Binary (с ROB)", "Continuous (с ROB)", "Prevalence",
-             "Pre-computed (ADHD trials)", "Pre-computed (risk difference)"),
-  "Файл" = c("test_binary_rob.csv", "test_continuous_rob.csv", "test_prevalence.csv",
-              "test_precomputed_adhd.csv", "test_precomputed_rd.csv"),
-  "Столбцы для стратификации" = c("rob", "rob", "country", "drug", "—"),
-  check.names = FALSE
-)
-kable(test_files, caption = "Тестовые CSV-файлы") |>
-  kable_styling(bootstrap_options = c("striped", "hover"), full_width = FALSE)
-```
-
-Пример структуры файла для **бинарных данных** (`test_binary_rob.csv`):
-
-```{r show-binary-example}
-#| echo: false
-bin_ex <- read.csv(
-  "/Users/irinagorbunova/Documents/Obsidian Vault/_systematic_review_course/_lecture_6/meta_shiny/test_binary_rob.csv"
-)
-kable(head(bin_ex, 5), caption = "test_binary_rob.csv (первые 5 строк)") |>
-  kable_styling(bootstrap_options = c("striped", "hover"), font_size = 12)
-```
-
-Пример для **pre-computed** (`test_precomputed_adhd.csv`):
-
-```{r show-precomputed-example}
-#| echo: false
-pre_ex <- read.csv(
-  "/Users/irinagorbunova/Documents/Obsidian Vault/_systematic_review_course/_lecture_6/meta_shiny/test_precomputed_adhd.csv"
-)
-kable(head(pre_ex, 5), caption = "test_precomputed_adhd.csv (первые 5 строк)") |>
-  kable_styling(bootstrap_options = c("striped", "hover"), font_size = 12)
-```
-
----
-
-### 10.4 Что показывает приложение
+### 10.3 Что показывает приложение
 
 **Forest plot** (вкладка *Forest plot*):
 
@@ -1450,7 +1409,7 @@ kable(head(pre_ex, 5), caption = "test_precomputed_adhd.csv (первые 5 ст
 
 ---
 
-### 10.5 Анализ чувствительности вручную через приложение
+### 10.4 Анализ чувствительности вручную через приложение
 
 ::: {.callout-important}
 ## Как провести анализ чувствительности без кода

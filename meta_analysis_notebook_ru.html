@@ -2614,9 +2614,8 @@ window.Quarto = {
   <ul class="collapse">
   <li><a href="#поддерживаемые-типы-данных" id="toc-поддерживаемые-типы-данных" class="nav-link" data-scroll-target="#поддерживаемые-типы-данных">10.1 Поддерживаемые типы данных</a></li>
   <li><a href="#пошаговая-инструкция" id="toc-пошаговая-инструкция" class="nav-link" data-scroll-target="#пошаговая-инструкция">10.2 Пошаговая инструкция</a></li>
-  <li><a href="#примеры-тестовых-файлов" id="toc-примеры-тестовых-файлов" class="nav-link" data-scroll-target="#примеры-тестовых-файлов">10.3 Примеры тестовых файлов</a></li>
-  <li><a href="#что-показывает-приложение" id="toc-что-показывает-приложение" class="nav-link" data-scroll-target="#что-показывает-приложение">10.4 Что показывает приложение</a></li>
-  <li><a href="#анализ-чувствительности-вручную-через-приложение" id="toc-анализ-чувствительности-вручную-через-приложение" class="nav-link" data-scroll-target="#анализ-чувствительности-вручную-через-приложение">10.5 Анализ чувствительности вручную через приложение</a></li>
+  <li><a href="#что-показывает-приложение" id="toc-что-показывает-приложение" class="nav-link" data-scroll-target="#что-показывает-приложение">10.3 Что показывает приложение</a></li>
+  <li><a href="#анализ-чувствительности-вручную-через-приложение" id="toc-анализ-чувствительности-вручную-через-приложение" class="nav-link" data-scroll-target="#анализ-чувствительности-вручную-через-приложение">10.4 Анализ чувствительности вручную через приложение</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -5210,46 +5209,46 @@ Details of meta-analysis methods:
 <h3 class="anchored" data-anchor-id="поддерживаемые-типы-данных">10.1 Поддерживаемые типы данных</h3>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 13%">
-<col style="width: 27%">
-<col style="width: 59%">
+<col style="width: 12%">
+<col style="width: 32%">
+<col style="width: 55%">
 </colgroup>
 <thead>
 <tr class="header">
 <th>Тип</th>
-<th>Описание</th>
+<th>Мера эффекта</th>
 <th>Обязательные столбцы</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td><strong>Binary</strong></td>
-<td>Событие / нет, две группы сравнения</td>
+<td>OR, RR, RD</td>
 <td><code>events_treat</code>, <code>n_treat</code>, <code>events_ctrl</code>, <code>n_ctrl</code></td>
 </tr>
 <tr class="even">
 <td><strong>Continuous</strong></td>
-<td>Средние ± SD, две группы сравнения</td>
+<td>MD, SMD</td>
 <td><code>n_treat</code>, <code>mean_treat</code>, <code>sd_treat</code>, <code>n_ctrl</code>, <code>mean_ctrl</code>, <code>sd_ctrl</code></td>
 </tr>
 <tr class="odd">
 <td><strong>Prevalence</strong></td>
-<td>Доля (без группы сравнения)</td>
+<td>Доля (%)</td>
 <td><code>events</code>, <code>n</code></td>
 </tr>
 <tr class="even">
 <td><strong>Incidence rate</strong></td>
-<td>События / время (без группы сравнения)</td>
+<td>IR на 1000 ч.-лет</td>
 <td><code>events</code>, <code>person_time</code></td>
 </tr>
 <tr class="odd">
 <td><strong>Incidence rate ratio</strong></td>
-<td>Две группы, время наблюдения</td>
+<td>IRR</td>
 <td><code>events_treat</code>, <code>time_treat</code>, <code>events_ctrl</code>, <code>time_ctrl</code></td>
 </tr>
 <tr class="even">
 <td><strong>Pre-computed</strong></td>
-<td>Посчитанный эффект + SE или 95% ДИ</td>
+<td>Любая (OR, RR, HR, MD…)</td>
 <td><code>effect</code> + <code>se</code> ИЛИ <code>ci_lower</code> + <code>ci_upper</code></td>
 </tr>
 </tbody>
@@ -5282,204 +5281,8 @@ Details of meta-analysis methods:
 </ul>
 <hr>
 </section>
-<section id="примеры-тестовых-файлов" class="level3">
-<h3 class="anchored" data-anchor-id="примеры-тестовых-файлов">10.3 Примеры тестовых файлов</h3>
-<p>Скачайте готовые файлы для проверки каждого типа:</p>
-<div class="cell">
-<div class="cell-output-display">
-<table class="table table-striped table-hover caption-top table-sm small">
-<caption>Тестовые CSV-файлы</caption>
-<thead>
-<tr class="header">
-<th style="text-align: left;" data-quarto-table-cell-role="th">Тип</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">Файл</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">Столбцы для стратификации</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">Binary (с ROB)</td>
-<td style="text-align: left;">test_binary_rob.csv</td>
-<td style="text-align: left;">rob</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Continuous (с ROB)</td>
-<td style="text-align: left;">test_continuous_rob.csv</td>
-<td style="text-align: left;">rob</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Prevalence</td>
-<td style="text-align: left;">test_prevalence.csv</td>
-<td style="text-align: left;">country</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Pre-computed (ADHD trials)</td>
-<td style="text-align: left;">test_precomputed_adhd.csv</td>
-<td style="text-align: left;">drug</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Pre-computed (risk difference)</td>
-<td style="text-align: left;">test_precomputed_rd.csv</td>
-<td style="text-align: left;">—</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<p>Пример структуры файла для <strong>бинарных данных</strong> (<code>test_binary_rob.csv</code>):</p>
-<div class="cell">
-<div class="cell-output-display">
-<table class="table table-striped table-hover caption-top table-sm small">
-<caption>test_binary_rob.csv (первые 5 строк)</caption>
-<thead>
-<tr class="header">
-<th style="text-align: left;" data-quarto-table-cell-role="th">study</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">events_treat</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">n_treat</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">events_ctrl</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">n_ctrl</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">rob</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">Adams 2005</td>
-<td style="text-align: right;">15</td>
-<td style="text-align: right;">80</td>
-<td style="text-align: right;">25</td>
-<td style="text-align: right;">82</td>
-<td style="text-align: left;">Low</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Brown 2007</td>
-<td style="text-align: right;">22</td>
-<td style="text-align: right;">100</td>
-<td style="text-align: right;">30</td>
-<td style="text-align: right;">102</td>
-<td style="text-align: left;">Low</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Chen 2009</td>
-<td style="text-align: right;">10</td>
-<td style="text-align: right;">60</td>
-<td style="text-align: right;">18</td>
-<td style="text-align: right;">62</td>
-<td style="text-align: left;">High</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Davis 2011</td>
-<td style="text-align: right;">30</td>
-<td style="text-align: right;">150</td>
-<td style="text-align: right;">45</td>
-<td style="text-align: right;">148</td>
-<td style="text-align: left;">Low</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Evans 2013</td>
-<td style="text-align: right;">18</td>
-<td style="text-align: right;">90</td>
-<td style="text-align: right;">28</td>
-<td style="text-align: right;">92</td>
-<td style="text-align: left;">Unclear</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<p>Пример для <strong>pre-computed</strong> (<code>test_precomputed_adhd.csv</code>):</p>
-<div class="cell">
-<div class="cell-output-display">
-<table class="table table-striped table-hover caption-top table-sm small">
-<caption>test_precomputed_adhd.csv (первые 5 строк)</caption>
-<thead>
-<tr class="header">
-<th style="text-align: left;" data-quarto-table-cell-role="th">study</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">year</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">drug</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">dose_mg</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">n_treat</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">n_ctrl</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">outcome</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">effect</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">ci_lower</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">ci_upper</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">rob</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">Adler 2017</td>
-<td style="text-align: right;">2017</td>
-<td style="text-align: left;">SHP465 MAS</td>
-<td style="text-align: right;">12.5</td>
-<td style="text-align: right;">92</td>
-<td style="text-align: right;">91</td>
-<td style="text-align: left;">ADHD-RS total score</td>
-<td style="text-align: right;">-8.1</td>
-<td style="text-align: right;">-11.7</td>
-<td style="text-align: right;">-4.4</td>
-<td style="text-align: left;">Low</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Adler 2017</td>
-<td style="text-align: right;">2017</td>
-<td style="text-align: left;">SHP465 MAS</td>
-<td style="text-align: right;">37.5</td>
-<td style="text-align: right;">92</td>
-<td style="text-align: right;">91</td>
-<td style="text-align: left;">ADHD-RS total score</td>
-<td style="text-align: right;">-13.4</td>
-<td style="text-align: right;">-17.1</td>
-<td style="text-align: right;">-9.7</td>
-<td style="text-align: left;">Low</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Adler 2008</td>
-<td style="text-align: right;">2008</td>
-<td style="text-align: left;">LDX</td>
-<td style="text-align: right;">30.0</td>
-<td style="text-align: right;">62</td>
-<td style="text-align: right;">61</td>
-<td style="text-align: left;">ADHD-RS total score</td>
-<td style="text-align: right;">-8.9</td>
-<td style="text-align: right;">-12.4</td>
-<td style="text-align: right;">-5.4</td>
-<td style="text-align: left;">Low</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Adler 2008</td>
-<td style="text-align: right;">2008</td>
-<td style="text-align: left;">LDX</td>
-<td style="text-align: right;">50.0</td>
-<td style="text-align: right;">63</td>
-<td style="text-align: right;">61</td>
-<td style="text-align: left;">ADHD-RS total score</td>
-<td style="text-align: right;">-11.7</td>
-<td style="text-align: right;">-15.3</td>
-<td style="text-align: right;">-8.1</td>
-<td style="text-align: left;">Low</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Adler 2008</td>
-<td style="text-align: right;">2008</td>
-<td style="text-align: left;">LDX</td>
-<td style="text-align: right;">70.0</td>
-<td style="text-align: right;">64</td>
-<td style="text-align: right;">61</td>
-<td style="text-align: left;">ADHD-RS total score</td>
-<td style="text-align: right;">-14.2</td>
-<td style="text-align: right;">-18.0</td>
-<td style="text-align: right;">-10.4</td>
-<td style="text-align: left;">Low</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<hr>
-</section>
 <section id="что-показывает-приложение" class="level3">
-<h3 class="anchored" data-anchor-id="что-показывает-приложение">10.4 Что показывает приложение</h3>
+<h3 class="anchored" data-anchor-id="что-показывает-приложение">10.3 Что показывает приложение</h3>
 <p><strong>Forest plot</strong> (вкладка <em>Forest plot</em>):</p>
 <ul>
 <li>Оба эффекта — фиксированный и случайный — отображаются одновременно</li>
@@ -5497,7 +5300,7 @@ Details of meta-analysis methods:
 <hr>
 </section>
 <section id="анализ-чувствительности-вручную-через-приложение" class="level3">
-<h3 class="anchored" data-anchor-id="анализ-чувствительности-вручную-через-приложение">10.5 Анализ чувствительности вручную через приложение</h3>
+<h3 class="anchored" data-anchor-id="анализ-чувствительности-вручную-через-приложение">10.4 Анализ чувствительности вручную через приложение</h3>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -7325,14 +7128,14 @@ Details of meta-analysis methods:
 <span id="cb90-1337"><a href="#cb90-1337" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb90-1338"><a href="#cb90-1338" aria-hidden="true" tabindex="-1"></a><span class="fu">### 10.1 Поддерживаемые типы данных</span></span>
 <span id="cb90-1339"><a href="#cb90-1339" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-1340"><a href="#cb90-1340" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Тип <span class="pp">|</span> Описание <span class="pp">|</span> Обязательные столбцы <span class="pp">|</span></span>
-<span id="cb90-1341"><a href="#cb90-1341" aria-hidden="true" tabindex="-1"></a><span class="pp">|-----|----------|----------------------|</span></span>
-<span id="cb90-1342"><a href="#cb90-1342" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> **Binary** <span class="pp">|</span> Событие / нет, две группы сравнения <span class="pp">|</span> <span class="in">`events_treat`</span>, <span class="in">`n_treat`</span>, <span class="in">`events_ctrl`</span>, <span class="in">`n_ctrl`</span> <span class="pp">|</span></span>
-<span id="cb90-1343"><a href="#cb90-1343" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> **Continuous** <span class="pp">|</span> Средние ± SD, две группы сравнения <span class="pp">|</span> <span class="in">`n_treat`</span>, <span class="in">`mean_treat`</span>, <span class="in">`sd_treat`</span>, <span class="in">`n_ctrl`</span>, <span class="in">`mean_ctrl`</span>, <span class="in">`sd_ctrl`</span> <span class="pp">|</span></span>
-<span id="cb90-1344"><a href="#cb90-1344" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> **Prevalence** <span class="pp">|</span> Доля (без группы сравнения) <span class="pp">|</span> <span class="in">`events`</span>, <span class="in">`n`</span> <span class="pp">|</span></span>
-<span id="cb90-1345"><a href="#cb90-1345" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> **Incidence rate** <span class="pp">|</span> События / время (без группы сравнения) <span class="pp">|</span> <span class="in">`events`</span>, <span class="in">`person_time`</span> <span class="pp">|</span></span>
-<span id="cb90-1346"><a href="#cb90-1346" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> **Incidence rate ratio** <span class="pp">|</span> Две группы, время наблюдения <span class="pp">|</span> <span class="in">`events_treat`</span>, <span class="in">`time_treat`</span>, <span class="in">`events_ctrl`</span>, <span class="in">`time_ctrl`</span> <span class="pp">|</span></span>
-<span id="cb90-1347"><a href="#cb90-1347" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> **Pre-computed** <span class="pp">|</span> Посчитанный эффект + SE или 95% ДИ <span class="pp">|</span> <span class="in">`effect`</span> + <span class="in">`se`</span> ИЛИ <span class="in">`ci_lower`</span> + <span class="in">`ci_upper`</span> <span class="pp">|</span></span>
+<span id="cb90-1340"><a href="#cb90-1340" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Тип <span class="pp">|</span> Мера эффекта <span class="pp">|</span> Обязательные столбцы <span class="pp">|</span></span>
+<span id="cb90-1341"><a href="#cb90-1341" aria-hidden="true" tabindex="-1"></a><span class="pp">|-----|-------------|----------------------|</span></span>
+<span id="cb90-1342"><a href="#cb90-1342" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> **Binary** <span class="pp">|</span> OR, RR, RD <span class="pp">|</span> <span class="in">`events_treat`</span>, <span class="in">`n_treat`</span>, <span class="in">`events_ctrl`</span>, <span class="in">`n_ctrl`</span> <span class="pp">|</span></span>
+<span id="cb90-1343"><a href="#cb90-1343" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> **Continuous** <span class="pp">|</span> MD, SMD <span class="pp">|</span> <span class="in">`n_treat`</span>, <span class="in">`mean_treat`</span>, <span class="in">`sd_treat`</span>, <span class="in">`n_ctrl`</span>, <span class="in">`mean_ctrl`</span>, <span class="in">`sd_ctrl`</span> <span class="pp">|</span></span>
+<span id="cb90-1344"><a href="#cb90-1344" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> **Prevalence** <span class="pp">|</span> Доля (%) <span class="pp">|</span> <span class="in">`events`</span>, <span class="in">`n`</span> <span class="pp">|</span></span>
+<span id="cb90-1345"><a href="#cb90-1345" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> **Incidence rate** <span class="pp">|</span> IR на 1000 ч.-лет <span class="pp">|</span> <span class="in">`events`</span>, <span class="in">`person_time`</span> <span class="pp">|</span></span>
+<span id="cb90-1346"><a href="#cb90-1346" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> **Incidence rate ratio** <span class="pp">|</span> IRR <span class="pp">|</span> <span class="in">`events_treat`</span>, <span class="in">`time_treat`</span>, <span class="in">`events_ctrl`</span>, <span class="in">`time_ctrl`</span> <span class="pp">|</span></span>
+<span id="cb90-1347"><a href="#cb90-1347" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> **Pre-computed** <span class="pp">|</span> Любая (OR, RR, HR, MD…) <span class="pp">|</span> <span class="in">`effect`</span> + <span class="in">`se`</span> ИЛИ <span class="in">`ci_lower`</span> + <span class="in">`ci_upper`</span> <span class="pp">|</span></span>
 <span id="cb90-1348"><a href="#cb90-1348" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb90-1349"><a href="#cb90-1349" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; Имена столбцов могут быть любыми — приложение предложит сопоставить их вручную после загрузки файла.</span></span>
 <span id="cb90-1350"><a href="#cb90-1350" aria-hidden="true" tabindex="-1"></a></span>
@@ -7378,86 +7181,45 @@ Details of meta-analysis methods:
 <span id="cb90-1390"><a href="#cb90-1390" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb90-1391"><a href="#cb90-1391" aria-hidden="true" tabindex="-1"></a>---</span>
 <span id="cb90-1392"><a href="#cb90-1392" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-1393"><a href="#cb90-1393" aria-hidden="true" tabindex="-1"></a><span class="fu">### 10.3 Примеры тестовых файлов</span></span>
+<span id="cb90-1393"><a href="#cb90-1393" aria-hidden="true" tabindex="-1"></a><span class="fu">### 10.3 Что показывает приложение</span></span>
 <span id="cb90-1394"><a href="#cb90-1394" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-1395"><a href="#cb90-1395" aria-hidden="true" tabindex="-1"></a>Скачайте готовые файлы для проверки каждого типа:</span>
+<span id="cb90-1395"><a href="#cb90-1395" aria-hidden="true" tabindex="-1"></a>**Forest plot** (вкладка *Forest plot*):</span>
 <span id="cb90-1396"><a href="#cb90-1396" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-1397"><a href="#cb90-1397" aria-hidden="true" tabindex="-1"></a><span class="in">```{r test-data-links, echo=FALSE}</span></span>
-<span id="cb90-1398"><a href="#cb90-1398" aria-hidden="true" tabindex="-1"></a>test_files <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb90-1399"><a href="#cb90-1399" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;Тип&quot;</span> <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&quot;Binary (с ROB)&quot;</span>, <span class="st">&quot;Continuous (с ROB)&quot;</span>, <span class="st">&quot;Prevalence&quot;</span>,</span>
-<span id="cb90-1400"><a href="#cb90-1400" aria-hidden="true" tabindex="-1"></a>             <span class="st">&quot;Pre-computed (ADHD trials)&quot;</span>, <span class="st">&quot;Pre-computed (risk difference)&quot;</span>),</span>
-<span id="cb90-1401"><a href="#cb90-1401" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;Файл&quot;</span> <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&quot;test_binary_rob.csv&quot;</span>, <span class="st">&quot;test_continuous_rob.csv&quot;</span>, <span class="st">&quot;test_prevalence.csv&quot;</span>,</span>
-<span id="cb90-1402"><a href="#cb90-1402" aria-hidden="true" tabindex="-1"></a>              <span class="st">&quot;test_precomputed_adhd.csv&quot;</span>, <span class="st">&quot;test_precomputed_rd.csv&quot;</span>),</span>
-<span id="cb90-1403"><a href="#cb90-1403" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;Столбцы для стратификации&quot;</span> <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&quot;rob&quot;</span>, <span class="st">&quot;rob&quot;</span>, <span class="st">&quot;country&quot;</span>, <span class="st">&quot;drug&quot;</span>, <span class="st">&quot;—&quot;</span>),</span>
-<span id="cb90-1404"><a href="#cb90-1404" aria-hidden="true" tabindex="-1"></a>  <span class="at">check.names =</span> <span class="cn">FALSE</span></span>
-<span id="cb90-1405"><a href="#cb90-1405" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb90-1406"><a href="#cb90-1406" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(test_files, <span class="at">caption =</span> <span class="st">&quot;Тестовые CSV-файлы&quot;</span>) <span class="sc">|&gt;</span></span>
-<span id="cb90-1407"><a href="#cb90-1407" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">bootstrap_options =</span> <span class="fu">c</span>(<span class="st">&quot;striped&quot;</span>, <span class="st">&quot;hover&quot;</span>), <span class="at">full_width =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb90-1408"><a href="#cb90-1408" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb90-1397"><a href="#cb90-1397" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Оба эффекта — фиксированный и случайный — отображаются одновременно</span>
+<span id="cb90-1398"><a href="#cb90-1398" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Ромб синего цвета = фиксированный эффект; красного = случайные эффекты</span>
+<span id="cb90-1399"><a href="#cb90-1399" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>При выбранной стратификации появляются подгруппы с отдельными ромбами и тестом на различие (p для subgroup difference)</span>
+<span id="cb90-1400"><a href="#cb90-1400" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>I², τ², Q и p-значение выводятся под графиком</span>
+<span id="cb90-1401"><a href="#cb90-1401" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-1402"><a href="#cb90-1402" aria-hidden="true" tabindex="-1"></a>**Funnel plot** (вкладка *Funnel plot*):</span>
+<span id="cb90-1403"><a href="#cb90-1403" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-1404"><a href="#cb90-1404" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Контурный (contour-enhanced) воронкообразный график</span>
+<span id="cb90-1405"><a href="#cb90-1405" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Три зоны значимости: p &lt; 0.10 (светло-голубая), p &lt; 0.05 (средняя), p &lt; 0.01 (тёмная)</span>
+<span id="cb90-1406"><a href="#cb90-1406" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Точки вне зоны p &lt; 0.05 — статистически значимые результаты</span>
+<span id="cb90-1407"><a href="#cb90-1407" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Общая асимметрия паттерна (не отдельные точки) — сигнал возможного publication bias</span>
+<span id="cb90-1408"><a href="#cb90-1408" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb90-1409"><a href="#cb90-1409" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-1410"><a href="#cb90-1410" aria-hidden="true" tabindex="-1"></a>Пример структуры файла для **бинарных данных** (<span class="in">`test_binary_rob.csv`</span>):</span>
+<span id="cb90-1410"><a href="#cb90-1410" aria-hidden="true" tabindex="-1"></a>---</span>
 <span id="cb90-1411"><a href="#cb90-1411" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-1412"><a href="#cb90-1412" aria-hidden="true" tabindex="-1"></a><span class="in">```{r show-binary-example}</span></span>
-<span id="cb90-1413"><a href="#cb90-1413" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
-<span id="cb90-1414"><a href="#cb90-1414" aria-hidden="true" tabindex="-1"></a>bin_ex <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(</span>
-<span id="cb90-1415"><a href="#cb90-1415" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;/Users/irinagorbunova/Documents/Obsidian Vault/_systematic_review_course/_lecture_6/meta_shiny/test_binary_rob.csv&quot;</span></span>
-<span id="cb90-1416"><a href="#cb90-1416" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb90-1417"><a href="#cb90-1417" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(<span class="fu">head</span>(bin_ex, <span class="dv">5</span>), <span class="at">caption =</span> <span class="st">&quot;test_binary_rob.csv (первые 5 строк)&quot;</span>) <span class="sc">|&gt;</span></span>
-<span id="cb90-1418"><a href="#cb90-1418" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">bootstrap_options =</span> <span class="fu">c</span>(<span class="st">&quot;striped&quot;</span>, <span class="st">&quot;hover&quot;</span>), <span class="at">font_size =</span> <span class="dv">12</span>)</span>
-<span id="cb90-1419"><a href="#cb90-1419" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb90-1412"><a href="#cb90-1412" aria-hidden="true" tabindex="-1"></a><span class="fu">### 10.4 Анализ чувствительности вручную через приложение</span></span>
+<span id="cb90-1413"><a href="#cb90-1413" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-1414"><a href="#cb90-1414" aria-hidden="true" tabindex="-1"></a>::: {.callout-important}</span>
+<span id="cb90-1415"><a href="#cb90-1415" aria-hidden="true" tabindex="-1"></a><span class="fu">## Как провести анализ чувствительности без кода</span></span>
+<span id="cb90-1416"><a href="#cb90-1416" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-1417"><a href="#cb90-1417" aria-hidden="true" tabindex="-1"></a>**Анализ чувствительности** — это повторный мета-анализ на подмножестве исследований, чтобы проверить, насколько объединенная оценка зависит от сомнительных исследований.</span>
+<span id="cb90-1418"><a href="#cb90-1418" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-1419"><a href="#cb90-1419" aria-hidden="true" tabindex="-1"></a>**Алгоритм:**</span>
 <span id="cb90-1420"><a href="#cb90-1420" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-1421"><a href="#cb90-1421" aria-hidden="true" tabindex="-1"></a>Пример для **pre-computed** (<span class="in">`test_precomputed_adhd.csv`</span>):</span>
-<span id="cb90-1422"><a href="#cb90-1422" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-1423"><a href="#cb90-1423" aria-hidden="true" tabindex="-1"></a><span class="in">```{r show-precomputed-example}</span></span>
-<span id="cb90-1424"><a href="#cb90-1424" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
-<span id="cb90-1425"><a href="#cb90-1425" aria-hidden="true" tabindex="-1"></a>pre_ex <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(</span>
-<span id="cb90-1426"><a href="#cb90-1426" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;/Users/irinagorbunova/Documents/Obsidian Vault/_systematic_review_course/_lecture_6/meta_shiny/test_precomputed_adhd.csv&quot;</span></span>
-<span id="cb90-1427"><a href="#cb90-1427" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb90-1428"><a href="#cb90-1428" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(<span class="fu">head</span>(pre_ex, <span class="dv">5</span>), <span class="at">caption =</span> <span class="st">&quot;test_precomputed_adhd.csv (первые 5 строк)&quot;</span>) <span class="sc">|&gt;</span></span>
-<span id="cb90-1429"><a href="#cb90-1429" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">bootstrap_options =</span> <span class="fu">c</span>(<span class="st">&quot;striped&quot;</span>, <span class="st">&quot;hover&quot;</span>), <span class="at">font_size =</span> <span class="dv">12</span>)</span>
-<span id="cb90-1430"><a href="#cb90-1430" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb90-1431"><a href="#cb90-1431" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-1432"><a href="#cb90-1432" aria-hidden="true" tabindex="-1"></a>---</span>
-<span id="cb90-1433"><a href="#cb90-1433" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-1434"><a href="#cb90-1434" aria-hidden="true" tabindex="-1"></a><span class="fu">### 10.4 Что показывает приложение</span></span>
-<span id="cb90-1435"><a href="#cb90-1435" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-1436"><a href="#cb90-1436" aria-hidden="true" tabindex="-1"></a>**Forest plot** (вкладка *Forest plot*):</span>
-<span id="cb90-1437"><a href="#cb90-1437" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-1438"><a href="#cb90-1438" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Оба эффекта — фиксированный и случайный — отображаются одновременно</span>
-<span id="cb90-1439"><a href="#cb90-1439" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Ромб синего цвета = фиксированный эффект; красного = случайные эффекты</span>
-<span id="cb90-1440"><a href="#cb90-1440" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>При выбранной стратификации появляются подгруппы с отдельными ромбами и тестом на различие (p для subgroup difference)</span>
-<span id="cb90-1441"><a href="#cb90-1441" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>I², τ², Q и p-значение выводятся под графиком</span>
-<span id="cb90-1442"><a href="#cb90-1442" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-1443"><a href="#cb90-1443" aria-hidden="true" tabindex="-1"></a>**Funnel plot** (вкладка *Funnel plot*):</span>
-<span id="cb90-1444"><a href="#cb90-1444" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-1445"><a href="#cb90-1445" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Контурный (contour-enhanced) воронкообразный график</span>
-<span id="cb90-1446"><a href="#cb90-1446" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Три зоны значимости: p &lt; 0.10 (светло-голубая), p &lt; 0.05 (средняя), p &lt; 0.01 (тёмная)</span>
-<span id="cb90-1447"><a href="#cb90-1447" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Точки вне зоны p &lt; 0.05 — статистически значимые результаты</span>
-<span id="cb90-1448"><a href="#cb90-1448" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Общая асимметрия паттерна (не отдельные точки) — сигнал возможного publication bias</span>
-<span id="cb90-1449"><a href="#cb90-1449" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-1450"><a href="#cb90-1450" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-1451"><a href="#cb90-1451" aria-hidden="true" tabindex="-1"></a>---</span>
-<span id="cb90-1452"><a href="#cb90-1452" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-1453"><a href="#cb90-1453" aria-hidden="true" tabindex="-1"></a><span class="fu">### 10.5 Анализ чувствительности вручную через приложение</span></span>
-<span id="cb90-1454"><a href="#cb90-1454" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-1455"><a href="#cb90-1455" aria-hidden="true" tabindex="-1"></a>::: {.callout-important}</span>
-<span id="cb90-1456"><a href="#cb90-1456" aria-hidden="true" tabindex="-1"></a><span class="fu">## Как провести анализ чувствительности без кода</span></span>
-<span id="cb90-1457"><a href="#cb90-1457" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-1458"><a href="#cb90-1458" aria-hidden="true" tabindex="-1"></a>**Анализ чувствительности** — это повторный мета-анализ на подмножестве исследований, чтобы проверить, насколько объединенная оценка зависит от сомнительных исследований.</span>
-<span id="cb90-1459"><a href="#cb90-1459" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-1460"><a href="#cb90-1460" aria-hidden="true" tabindex="-1"></a>**Алгоритм:**</span>
-<span id="cb90-1461"><a href="#cb90-1461" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-1462"><a href="#cb90-1462" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>Проведите полный анализ — сохраните forest plot и funnel plot (**«Основной анализ»**).</span>
-<span id="cb90-1463"><a href="#cb90-1463" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>Откройте исходный файл (CSV/Excel) и **удалите строки** с исследованиями, которые вызывают сомнения:</span>
-<span id="cb90-1464"><a href="#cb90-1464" aria-hidden="true" tabindex="-1"></a><span class="ss">   - </span>исследования с **высоким риском смещения** (например, строки где <span class="in">`rob == &quot;Высокий&quot;`</span>)</span>
-<span id="cb90-1465"><a href="#cb90-1465" aria-hidden="true" tabindex="-1"></a><span class="ss">   - </span>исследования из **серой литературы** (конференционные тезисы, регистры)</span>
-<span id="cb90-1466"><a href="#cb90-1466" aria-hidden="true" tabindex="-1"></a><span class="ss">   - </span>исследования с **другой особенностью** — иным дизайном, популяцией, дозировкой, спонсорством</span>
-<span id="cb90-1467"><a href="#cb90-1467" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>Загрузите очищенный файл в приложение и запустите анализ заново.</span>
-<span id="cb90-1468"><a href="#cb90-1468" aria-hidden="true" tabindex="-1"></a><span class="ss">4. </span>**Приложите оба forest plot** (полный и чувствительный) к отчёту.</span>
-<span id="cb90-1469"><a href="#cb90-1469" aria-hidden="true" tabindex="-1"></a><span class="ss">5. </span>Сравните точечные оценки и доверительные интервалы:</span>
-<span id="cb90-1470"><a href="#cb90-1470" aria-hidden="true" tabindex="-1"></a><span class="ss">   - </span>Если оценки **почти не изменились** → результат устойчив, вывод не меняется.</span>
-<span id="cb90-1471"><a href="#cb90-1471" aria-hidden="true" tabindex="-1"></a><span class="ss">   - </span>Если оценки **существенно расходятся** → исключенные исследования влияли на результат.</span>
-<span id="cb90-1472"><a href="#cb90-1472" aria-hidden="true" tabindex="-1"></a>:::</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal><i class="bi"></i></button></div>
+<span id="cb90-1421"><a href="#cb90-1421" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>Проведите полный анализ — сохраните forest plot и funnel plot (**«Основной анализ»**).</span>
+<span id="cb90-1422"><a href="#cb90-1422" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>Откройте исходный файл (CSV/Excel) и **удалите строки** с исследованиями, которые вызывают сомнения:</span>
+<span id="cb90-1423"><a href="#cb90-1423" aria-hidden="true" tabindex="-1"></a><span class="ss">   - </span>исследования с **высоким риском смещения** (например, строки где <span class="in">`rob == &quot;Высокий&quot;`</span>)</span>
+<span id="cb90-1424"><a href="#cb90-1424" aria-hidden="true" tabindex="-1"></a><span class="ss">   - </span>исследования из **серой литературы** (конференционные тезисы, регистры)</span>
+<span id="cb90-1425"><a href="#cb90-1425" aria-hidden="true" tabindex="-1"></a><span class="ss">   - </span>исследования с **другой особенностью** — иным дизайном, популяцией, дозировкой, спонсорством</span>
+<span id="cb90-1426"><a href="#cb90-1426" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>Загрузите очищенный файл в приложение и запустите анализ заново.</span>
+<span id="cb90-1427"><a href="#cb90-1427" aria-hidden="true" tabindex="-1"></a><span class="ss">4. </span>**Приложите оба forest plot** (полный и чувствительный) к отчёту.</span>
+<span id="cb90-1428"><a href="#cb90-1428" aria-hidden="true" tabindex="-1"></a><span class="ss">5. </span>Сравните точечные оценки и доверительные интервалы:</span>
+<span id="cb90-1429"><a href="#cb90-1429" aria-hidden="true" tabindex="-1"></a><span class="ss">   - </span>Если оценки **почти не изменились** → результат устойчив, вывод не меняется.</span>
+<span id="cb90-1430"><a href="#cb90-1430" aria-hidden="true" tabindex="-1"></a><span class="ss">   - </span>Если оценки **существенно расходятся** → исключенные исследования влияли на результат.</span>
+<span id="cb90-1431"><a href="#cb90-1431" aria-hidden="true" tabindex="-1"></a>:::</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 
