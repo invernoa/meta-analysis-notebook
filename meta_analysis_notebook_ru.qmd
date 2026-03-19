@@ -1390,7 +1390,57 @@ if (sum(!is.na(ma_adj$TE)) >= 10) {
 
 ---
 
-### 10.3 Что показывает приложение
+### 10.3 Примеры входных данных
+
+Вот как должны выглядеть данные для каждого типа исхода.
+
+**Бинарный исход** (Binary) — события и размеры групп, столбец `rob` можно использовать для стратификации:
+
+```{r show-binary-example}
+#| echo: false
+bin_ex <- read.csv(
+  "/Users/irinagorbunova/Documents/Obsidian Vault/_systematic_review_course/_lecture_6/meta_shiny/test_binary_rob.csv"
+)
+kable(head(bin_ex, 5)) |>
+  kable_styling(bootstrap_options = c("striped", "hover"), font_size = 12)
+```
+
+**Непрерывный исход** (Continuous) — средние и стандартные отклонения в двух группах:
+
+```{r show-continuous-example}
+#| echo: false
+cont_ex <- read.csv(
+  "/Users/irinagorbunova/Documents/Obsidian Vault/_systematic_review_course/_lecture_6/meta_shiny/test_continuous_rob.csv"
+)
+kable(head(cont_ex, 5)) |>
+  kable_styling(bootstrap_options = c("striped", "hover"), font_size = 12)
+```
+
+**Распространённость** (Prevalence) — случаи и размер выборки, одна группа:
+
+```{r show-prevalence-example}
+#| echo: false
+prev_ex <- read.csv(
+  "/Users/irinagorbunova/Documents/Obsidian Vault/_systematic_review_course/_lecture_6/meta_shiny/test_prevalence.csv"
+)
+kable(head(prev_ex, 5)) |>
+  kable_styling(bootstrap_options = c("striped", "hover"), font_size = 12)
+```
+
+**Pre-computed** — готовые оценки эффекта с 95% ДИ (например, LS mean difference из РКИ по СДВГ):
+
+```{r show-precomputed-example}
+#| echo: false
+pre_ex <- read.csv(
+  "/Users/irinagorbunova/Documents/Obsidian Vault/_systematic_review_course/_lecture_6/meta_shiny/test_precomputed_adhd.csv"
+)
+kable(head(pre_ex, 5)) |>
+  kable_styling(bootstrap_options = c("striped", "hover"), font_size = 12)
+```
+
+---
+
+### 10.4 Что показывает приложение
 
 **Forest plot** (вкладка *Forest plot*):
 
@@ -1409,7 +1459,7 @@ if (sum(!is.na(ma_adj$TE)) >= 10) {
 
 ---
 
-### 10.4 Анализ чувствительности вручную через приложение
+### 10.5 Анализ чувствительности вручную через приложение
 
 ::: {.callout-important}
 ## Как провести анализ чувствительности без кода
