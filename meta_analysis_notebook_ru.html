@@ -5586,12 +5586,12 @@ Details of meta-analysis methods:
 <p><strong>Анализ чувствительности</strong> — это повторный мета-анализ на подмножестве исследований, чтобы проверить, насколько объединенная оценка зависит от сомнительных исследований.</p>
 <p><strong>Алгоритм:</strong></p>
 <ol type="1">
-<li>Проведите полный анализ — сохраните forest plot и funnel plot (<strong>«Основной анализ»</strong>).</li>
+<li>Проведите анализ на всем наборе исследований сохраните forest plot и funnel plot.</li>
 <li>Откройте исходный файл (CSV/Excel) и <strong>удалите строки</strong> с исследованиями, которые вызывают сомнения:
 <ul>
-<li>исследования с <strong>высоким риском смещения</strong> (например, строки где <code>rob == &quot;Высокий&quot;</code>)</li>
-<li>исследования из <strong>серой литературы</strong> (конференционные тезисы, регистры)</li>
-<li>исследования с <strong>другой особенностью</strong> — иным дизайном, популяцией, дозировкой, спонсорством</li>
+<li>либо исследования с <strong>высоким риском смещения</strong> (например, строки где <code>rob == &quot;Высокий&quot;</code>)</li>
+<li>либо исследования из <strong>серой литературы</strong> (конференционные тезисы, регистры)</li>
+<li>либо исследования с <strong>другой особенностью</strong> — иным дизайном, популяцией, дозировкой, спонсорством Для анализа чувствительности выбираете какой-то один критерий, а не все вышеперечисленные сразу. Можно последовательно, например, сначала без высокорискованных ROB, потом по типу источника/полноте данных.</li>
 </ul></li>
 <li>Загрузите очищенный файл в приложение и запустите анализ заново.</li>
 <li><strong>Приложите оба forest plot</strong> (полный и чувствительный) к отчёту.</li>
@@ -7531,17 +7531,18 @@ Details of meta-analysis methods:
 <span id="cb90-1468"><a href="#cb90-1468" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb90-1469"><a href="#cb90-1469" aria-hidden="true" tabindex="-1"></a>**Алгоритм:**</span>
 <span id="cb90-1470"><a href="#cb90-1470" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-1471"><a href="#cb90-1471" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>Проведите полный анализ — сохраните forest plot и funnel plot (**«Основной анализ»**).</span>
+<span id="cb90-1471"><a href="#cb90-1471" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>Проведите анализ на всем наборе исследований сохраните forest plot и funnel plot.</span>
 <span id="cb90-1472"><a href="#cb90-1472" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>Откройте исходный файл (CSV/Excel) и **удалите строки** с исследованиями, которые вызывают сомнения:</span>
-<span id="cb90-1473"><a href="#cb90-1473" aria-hidden="true" tabindex="-1"></a><span class="ss">   - </span>исследования с **высоким риском смещения** (например, строки где <span class="in">`rob == &quot;Высокий&quot;`</span>)</span>
-<span id="cb90-1474"><a href="#cb90-1474" aria-hidden="true" tabindex="-1"></a><span class="ss">   - </span>исследования из **серой литературы** (конференционные тезисы, регистры)</span>
-<span id="cb90-1475"><a href="#cb90-1475" aria-hidden="true" tabindex="-1"></a><span class="ss">   - </span>исследования с **другой особенностью** — иным дизайном, популяцией, дозировкой, спонсорством</span>
-<span id="cb90-1476"><a href="#cb90-1476" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>Загрузите очищенный файл в приложение и запустите анализ заново.</span>
-<span id="cb90-1477"><a href="#cb90-1477" aria-hidden="true" tabindex="-1"></a><span class="ss">4. </span>**Приложите оба forest plot** (полный и чувствительный) к отчёту.</span>
-<span id="cb90-1478"><a href="#cb90-1478" aria-hidden="true" tabindex="-1"></a><span class="ss">5. </span>Сравните точечные оценки и доверительные интервалы:</span>
-<span id="cb90-1479"><a href="#cb90-1479" aria-hidden="true" tabindex="-1"></a><span class="ss">   - </span>Если оценки **почти не изменились** → результат устойчив, вывод не меняется.</span>
-<span id="cb90-1480"><a href="#cb90-1480" aria-hidden="true" tabindex="-1"></a><span class="ss">   - </span>Если оценки **существенно расходятся** → исключенные исследования влияли на результат.</span>
-<span id="cb90-1481"><a href="#cb90-1481" aria-hidden="true" tabindex="-1"></a>:::</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal><i class="bi"></i></button></div>
+<span id="cb90-1473"><a href="#cb90-1473" aria-hidden="true" tabindex="-1"></a><span class="ss">   - </span>либо исследования с **высоким риском смещения** (например, строки где <span class="in">`rob == &quot;Высокий&quot;`</span>)</span>
+<span id="cb90-1474"><a href="#cb90-1474" aria-hidden="true" tabindex="-1"></a><span class="ss">   - </span>либо исследования из **серой литературы** (конференционные тезисы, регистры)</span>
+<span id="cb90-1475"><a href="#cb90-1475" aria-hidden="true" tabindex="-1"></a><span class="ss">   - </span>либо исследования с **другой особенностью** — иным дизайном, популяцией, дозировкой, спонсорством</span>
+<span id="cb90-1476"><a href="#cb90-1476" aria-hidden="true" tabindex="-1"></a>   Для анализа чувствительности выбираете какой-то один критерий, а не все вышеперечисленные сразу. Можно последовательно, например, сначала без высокорискованных ROB, потом по типу источника/полноте данных. </span>
+<span id="cb90-1477"><a href="#cb90-1477" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>Загрузите очищенный файл в приложение и запустите анализ заново.</span>
+<span id="cb90-1478"><a href="#cb90-1478" aria-hidden="true" tabindex="-1"></a><span class="ss">4. </span>**Приложите оба forest plot** (полный и чувствительный) к отчёту.</span>
+<span id="cb90-1479"><a href="#cb90-1479" aria-hidden="true" tabindex="-1"></a><span class="ss">5. </span>Сравните точечные оценки и доверительные интервалы:</span>
+<span id="cb90-1480"><a href="#cb90-1480" aria-hidden="true" tabindex="-1"></a><span class="ss">   - </span>Если оценки **почти не изменились** → результат устойчив, вывод не меняется.</span>
+<span id="cb90-1481"><a href="#cb90-1481" aria-hidden="true" tabindex="-1"></a><span class="ss">   - </span>Если оценки **существенно расходятся** → исключенные исследования влияли на результат.</span>
+<span id="cb90-1482"><a href="#cb90-1482" aria-hidden="true" tabindex="-1"></a>:::</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 
