@@ -5504,20 +5504,6 @@ Details of meta-analysis methods:
 <li>Точки вне зоны p &lt; 0.05 — статистически значимые результаты</li>
 <li>Общая асимметрия паттерна (не отдельные точки) — сигнал возможного publication bias</li>
 </ul>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Совет: выгрузка результатов
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>В браузере нажмите правую кнопку мыши на графике → <strong>Сохранить изображение</strong> для скачивания forest plot или funnel plot.</p>
-<p>Для воспроизводимых отчётов рекомендуем R-код из разделов 2–9 настоящего практикума.</p>
-</div>
-</div>
 <hr>
 </section>
 <section id="анализ-чувствительности-вручную-через-приложение" class="level3">
@@ -5532,7 +5518,7 @@ Details of meta-analysis methods:
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><strong>Анализ чувствительности</strong> — это повторный мета-анализ на подмножестве исследований, чтобы проверить, насколько устойчив результат.</p>
+<p><strong>Анализ чувствительности</strong> — это повторный мета-анализ на подмножестве исследований, чтобы проверить, насколько объединенная оценка зависит от сомнительных исследований.</p>
 <p><strong>Алгоритм:</strong></p>
 <ol type="1">
 <li>Проведите полный анализ — сохраните forest plot и funnel plot (<strong>«Основной анализ»</strong>).</li>
@@ -5540,14 +5526,14 @@ Details of meta-analysis methods:
 <ul>
 <li>исследования с <strong>высоким риском смещения</strong> (например, строки где <code>rob == &quot;Высокий&quot;</code>)</li>
 <li>исследования из <strong>серой литературы</strong> (конференционные тезисы, регистры)</li>
-<li>исследования с <strong>другой особенностью</strong> — иным дизайном, популяцией, дозой</li>
+<li>исследования с <strong>другой особенностью</strong> — иным дизайном, популяцией, дозировкой, спонсорством</li>
 </ul></li>
 <li>Загрузите очищенный файл в приложение и запустите анализ заново.</li>
 <li><strong>Приложите оба forest plot</strong> (полный и чувствительный) к отчёту.</li>
 <li>Сравните точечные оценки и доверительные интервалы:
 <ul>
-<li>Если оценки <strong>близки и ДИ перекрываются</strong> → результат устойчив, вывод не меняется.</li>
-<li>Если оценки <strong>существенно расходятся</strong> → исключённые исследования влияли на результат; основным следует считать анализ на исследованиях с низким риском смещения.</li>
+<li>Если оценки <strong>почти не изменились</strong> → результат устойчив, вывод не меняется.</li>
+<li>Если оценки <strong>существенно расходятся</strong> → исключенные исследования влияли на результат.</li>
 </ul></li>
 </ol>
 </div>
@@ -7457,36 +7443,29 @@ Details of meta-analysis methods:
 <span id="cb92-1445"><a href="#cb92-1445" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Точки вне зоны p &lt; 0.05 — статистически значимые результаты</span>
 <span id="cb92-1446"><a href="#cb92-1446" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Общая асимметрия паттерна (не отдельные точки) — сигнал возможного publication bias</span>
 <span id="cb92-1447"><a href="#cb92-1447" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb92-1448"><a href="#cb92-1448" aria-hidden="true" tabindex="-1"></a>::: {.callout-tip}</span>
-<span id="cb92-1449"><a href="#cb92-1449" aria-hidden="true" tabindex="-1"></a><span class="fu">## Совет: выгрузка результатов</span></span>
+<span id="cb92-1448"><a href="#cb92-1448" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb92-1449"><a href="#cb92-1449" aria-hidden="true" tabindex="-1"></a>---</span>
 <span id="cb92-1450"><a href="#cb92-1450" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb92-1451"><a href="#cb92-1451" aria-hidden="true" tabindex="-1"></a>В браузере нажмите правую кнопку мыши на графике → **Сохранить изображение** для скачивания forest plot или funnel plot.</span>
+<span id="cb92-1451"><a href="#cb92-1451" aria-hidden="true" tabindex="-1"></a><span class="fu">### 10.5 Анализ чувствительности вручную через приложение</span></span>
 <span id="cb92-1452"><a href="#cb92-1452" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb92-1453"><a href="#cb92-1453" aria-hidden="true" tabindex="-1"></a>Для воспроизводимых отчётов рекомендуем R-код из разделов 2–9 настоящего практикума.</span>
-<span id="cb92-1454"><a href="#cb92-1454" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb92-1453"><a href="#cb92-1453" aria-hidden="true" tabindex="-1"></a>::: {.callout-important}</span>
+<span id="cb92-1454"><a href="#cb92-1454" aria-hidden="true" tabindex="-1"></a><span class="fu">## Как провести анализ чувствительности без кода</span></span>
 <span id="cb92-1455"><a href="#cb92-1455" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb92-1456"><a href="#cb92-1456" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb92-1456"><a href="#cb92-1456" aria-hidden="true" tabindex="-1"></a>**Анализ чувствительности** — это повторный мета-анализ на подмножестве исследований, чтобы проверить, насколько объединенная оценка зависит от сомнительных исследований.</span>
 <span id="cb92-1457"><a href="#cb92-1457" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb92-1458"><a href="#cb92-1458" aria-hidden="true" tabindex="-1"></a><span class="fu">### 10.5 Анализ чувствительности вручную через приложение</span></span>
+<span id="cb92-1458"><a href="#cb92-1458" aria-hidden="true" tabindex="-1"></a>**Алгоритм:**</span>
 <span id="cb92-1459"><a href="#cb92-1459" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb92-1460"><a href="#cb92-1460" aria-hidden="true" tabindex="-1"></a>::: {.callout-important}</span>
-<span id="cb92-1461"><a href="#cb92-1461" aria-hidden="true" tabindex="-1"></a><span class="fu">## Как провести анализ чувствительности без кода</span></span>
-<span id="cb92-1462"><a href="#cb92-1462" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb92-1463"><a href="#cb92-1463" aria-hidden="true" tabindex="-1"></a>**Анализ чувствительности** — это повторный мета-анализ на подмножестве исследований, чтобы проверить, насколько устойчив результат.</span>
-<span id="cb92-1464"><a href="#cb92-1464" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb92-1465"><a href="#cb92-1465" aria-hidden="true" tabindex="-1"></a>**Алгоритм:**</span>
-<span id="cb92-1466"><a href="#cb92-1466" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb92-1467"><a href="#cb92-1467" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>Проведите полный анализ — сохраните forest plot и funnel plot (**«Основной анализ»**).</span>
-<span id="cb92-1468"><a href="#cb92-1468" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>Откройте исходный файл (CSV/Excel) и **удалите строки** с исследованиями, которые вызывают сомнения:</span>
-<span id="cb92-1469"><a href="#cb92-1469" aria-hidden="true" tabindex="-1"></a><span class="ss">   - </span>исследования с **высоким риском смещения** (например, строки где <span class="in">`rob == &quot;Высокий&quot;`</span>)</span>
-<span id="cb92-1470"><a href="#cb92-1470" aria-hidden="true" tabindex="-1"></a><span class="ss">   - </span>исследования из **серой литературы** (конференционные тезисы, регистры)</span>
-<span id="cb92-1471"><a href="#cb92-1471" aria-hidden="true" tabindex="-1"></a><span class="ss">   - </span>исследования с **другой особенностью** — иным дизайном, популяцией, дозой</span>
-<span id="cb92-1472"><a href="#cb92-1472" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>Загрузите очищенный файл в приложение и запустите анализ заново.</span>
-<span id="cb92-1473"><a href="#cb92-1473" aria-hidden="true" tabindex="-1"></a><span class="ss">4. </span>**Приложите оба forest plot** (полный и чувствительный) к отчёту.</span>
-<span id="cb92-1474"><a href="#cb92-1474" aria-hidden="true" tabindex="-1"></a><span class="ss">5. </span>Сравните точечные оценки и доверительные интервалы:</span>
-<span id="cb92-1475"><a href="#cb92-1475" aria-hidden="true" tabindex="-1"></a><span class="ss">   - </span>Если оценки **близки и ДИ перекрываются** → результат устойчив, вывод не меняется.</span>
-<span id="cb92-1476"><a href="#cb92-1476" aria-hidden="true" tabindex="-1"></a><span class="ss">   - </span>Если оценки **существенно расходятся** → исключённые исследования влияли на результат; основным следует считать анализ на исследованиях с низким риском смещения.</span>
-<span id="cb92-1477"><a href="#cb92-1477" aria-hidden="true" tabindex="-1"></a>:::</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal><i class="bi"></i></button></div>
+<span id="cb92-1460"><a href="#cb92-1460" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>Проведите полный анализ — сохраните forest plot и funnel plot (**«Основной анализ»**).</span>
+<span id="cb92-1461"><a href="#cb92-1461" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>Откройте исходный файл (CSV/Excel) и **удалите строки** с исследованиями, которые вызывают сомнения:</span>
+<span id="cb92-1462"><a href="#cb92-1462" aria-hidden="true" tabindex="-1"></a><span class="ss">   - </span>исследования с **высоким риском смещения** (например, строки где <span class="in">`rob == &quot;Высокий&quot;`</span>)</span>
+<span id="cb92-1463"><a href="#cb92-1463" aria-hidden="true" tabindex="-1"></a><span class="ss">   - </span>исследования из **серой литературы** (конференционные тезисы, регистры)</span>
+<span id="cb92-1464"><a href="#cb92-1464" aria-hidden="true" tabindex="-1"></a><span class="ss">   - </span>исследования с **другой особенностью** — иным дизайном, популяцией, дозировкой, спонсорством</span>
+<span id="cb92-1465"><a href="#cb92-1465" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>Загрузите очищенный файл в приложение и запустите анализ заново.</span>
+<span id="cb92-1466"><a href="#cb92-1466" aria-hidden="true" tabindex="-1"></a><span class="ss">4. </span>**Приложите оба forest plot** (полный и чувствительный) к отчёту.</span>
+<span id="cb92-1467"><a href="#cb92-1467" aria-hidden="true" tabindex="-1"></a><span class="ss">5. </span>Сравните точечные оценки и доверительные интервалы:</span>
+<span id="cb92-1468"><a href="#cb92-1468" aria-hidden="true" tabindex="-1"></a><span class="ss">   - </span>Если оценки **почти не изменились** → результат устойчив, вывод не меняется.</span>
+<span id="cb92-1469"><a href="#cb92-1469" aria-hidden="true" tabindex="-1"></a><span class="ss">   - </span>Если оценки **существенно расходятся** → исключенные исследования влияли на результат.</span>
+<span id="cb92-1470"><a href="#cb92-1470" aria-hidden="true" tabindex="-1"></a>:::</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 
